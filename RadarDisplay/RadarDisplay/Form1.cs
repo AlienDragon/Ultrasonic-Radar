@@ -48,9 +48,13 @@ namespace RadarDisplay
                     comPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                     comPort.Open();
 
+
+                    comPort.Write("I");
                     btnInit.Enabled = false;
                     btnEnd.Enabled = true;
                     cbCom.Enabled = false;
+                    gbData.Enabled = false;
+                    gbMap.Enabled = false;
                 }
                 catch (Exception)
                 {
@@ -65,11 +69,15 @@ namespace RadarDisplay
         }
         private void btnEnd_Click(object sender, EventArgs e)
         {
+            comPort.Write("close");
             comPort.Close();
             update();
             btnInit.Enabled = true;
             cbCom.Enabled = true;
             btnEnd.Enabled = false;
+
+            gbData.Enabled = true;
+            gbMap.Enabled = true;
         }
 
         //Gets called whenever data is received through the com port
@@ -96,6 +104,10 @@ namespace RadarDisplay
             }
         }
 
+        private void lbDataView_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            loadPointData(dataSet[lbDataView.SelectedIndex]);
+        }
         private void loadPointData(DataPoint data)
         {
             lblId.Text = data.getID();
@@ -104,9 +116,52 @@ namespace RadarDisplay
             lblCoord.Text = data.getCoords().X + ", " + data.getCoords().Y;
         }
 
-        private void lbDataView_SelectedIndexChanged(object sender, EventArgs e)
-        { 
-            loadPointData(dataSet[lbDataView.SelectedIndex]);
+
+        private void btnDraw_Click(object sender, EventArgs e)
+        {
+            int midX = pbDisplay.Height / 2;
+            int midY = pbDisplay.Width / 2;
+
+
+            Bitmap _image = new Bitmap(pbDisplay.Width, pbDisplay.Height);
+            Graphics g = Graphics.FromImage(_image);
+
+            for(int i = 0; i < dataSet.Count(); i++)
+            {
+
+            }
+        }
+
+        private void pbDisplay_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            int midX = pbDisplay.Height / 2;
+            int midY = pbDisplay.Width / 2;
+
+            /*
+            if (cbAxis.Checked == true)
+            {
+                g.DrawLine(Pens.Blue, midX, 0, midX, pbMap.Height);
+                g.DrawLine(Pens.Blue, 0, midY, pbMap.Width, midY);
+            }*/
+
+            Brush wallBrush = new SolidBrush(Color.Green);
+
+            for (int i = 0; i < dataSet.Count; i++)
+            {
+                g.FillEllipse(wallBrush, new Rectangle(dataSet[i].getCoords().X + midX, dataSet[i].getCoords().Y + midY, 3, 3));
+                /*
+                try
+                {
+                    if (MyPoints[i].X > Int32.MinValue)
+                    {
+                        g.FillEllipse(wallBrush, new Rectangle(MyPoints[i].X, MyPoints[i].Y, 3, 3)); //OVERFLOW EXCEPTION
+                    }
+                }
+                catch (System.ArgumentOutOfRangeException) { }*/
+            }
+            wallBrush.Dispose();
         }
     }
 }

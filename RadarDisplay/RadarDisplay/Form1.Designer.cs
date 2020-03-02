@@ -30,11 +30,11 @@
         {
             this.btnInit = new System.Windows.Forms.Button();
             this.cbCom = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbCollect = new System.Windows.Forms.GroupBox();
             this.btnEnd = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbData = new System.Windows.Forms.GroupBox();
             this.lbDataView = new System.Windows.Forms.ListBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbMap = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.pbDisplay = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -48,11 +48,13 @@
             this.lblCoord = new System.Windows.Forms.Label();
             this.lblDist = new System.Windows.Forms.Label();
             this.lblAngle = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.btnDraw = new System.Windows.Forms.Button();
+            this.gbCollect.SuspendLayout();
+            this.gbData.SuspendLayout();
+            this.gbMap.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,17 +77,17 @@
             this.cbCom.Size = new System.Drawing.Size(121, 21);
             this.cbCom.TabIndex = 2;
             // 
-            // groupBox1
+            // gbCollect
             // 
-            this.groupBox1.Controls.Add(this.btnEnd);
-            this.groupBox1.Controls.Add(this.btnInit);
-            this.groupBox1.Controls.Add(this.cbCom);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(171, 100);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Start data collection";
+            this.gbCollect.Controls.Add(this.btnEnd);
+            this.gbCollect.Controls.Add(this.btnInit);
+            this.gbCollect.Controls.Add(this.cbCom);
+            this.gbCollect.Location = new System.Drawing.Point(12, 12);
+            this.gbCollect.Name = "gbCollect";
+            this.gbCollect.Size = new System.Drawing.Size(171, 100);
+            this.gbCollect.TabIndex = 3;
+            this.gbCollect.TabStop = false;
+            this.gbCollect.Text = "Data Collection";
             // 
             // btnEnd
             // 
@@ -98,16 +100,17 @@
             this.btnEnd.UseVisualStyleBackColor = true;
             this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
-            // groupBox2
+            // gbData
             // 
-            this.groupBox2.Controls.Add(this.groupBox4);
-            this.groupBox2.Controls.Add(this.lbDataView);
-            this.groupBox2.Location = new System.Drawing.Point(12, 119);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(268, 301);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Data";
+            this.gbData.Controls.Add(this.groupBox4);
+            this.gbData.Controls.Add(this.lbDataView);
+            this.gbData.Enabled = false;
+            this.gbData.Location = new System.Drawing.Point(12, 119);
+            this.gbData.Name = "gbData";
+            this.gbData.Size = new System.Drawing.Size(268, 301);
+            this.gbData.TabIndex = 4;
+            this.gbData.TabStop = false;
+            this.gbData.Text = "Data";
             // 
             // lbDataView
             // 
@@ -118,16 +121,17 @@
             this.lbDataView.TabIndex = 0;
             this.lbDataView.SelectedIndexChanged += new System.EventHandler(this.lbDataView_SelectedIndexChanged);
             // 
-            // groupBox3
+            // gbMap
             // 
-            this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Controls.Add(this.pbDisplay);
-            this.groupBox3.Location = new System.Drawing.Point(304, 13);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(462, 407);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Graphic Display";
+            this.gbMap.Controls.Add(this.groupBox5);
+            this.gbMap.Controls.Add(this.pbDisplay);
+            this.gbMap.Enabled = false;
+            this.gbMap.Location = new System.Drawing.Point(304, 13);
+            this.gbMap.Name = "gbMap";
+            this.gbMap.Size = new System.Drawing.Size(462, 407);
+            this.gbMap.TabIndex = 5;
+            this.gbMap.TabStop = false;
+            this.gbMap.Text = "Graphic Display";
             // 
             // groupBox4
             // 
@@ -148,9 +152,11 @@
             this.pbDisplay.Size = new System.Drawing.Size(449, 280);
             this.pbDisplay.TabIndex = 0;
             this.pbDisplay.TabStop = false;
+            this.pbDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbDisplay_Paint);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnDraw);
             this.groupBox5.Location = new System.Drawing.Point(7, 307);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(449, 94);
@@ -290,22 +296,33 @@
             this.lblAngle.TabIndex = 7;
             this.lblAngle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnDraw
+            // 
+            this.btnDraw.Location = new System.Drawing.Point(7, 20);
+            this.btnDraw.Name = "btnDraw";
+            this.btnDraw.Size = new System.Drawing.Size(75, 23);
+            this.btnDraw.TabIndex = 0;
+            this.btnDraw.Text = "Draw Map";
+            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 450);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gbMap);
+            this.Controls.Add(this.gbData);
+            this.Controls.Add(this.gbCollect);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.gbCollect.ResumeLayout(false);
+            this.gbData.ResumeLayout(false);
+            this.gbMap.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -316,10 +333,10 @@
 
         private System.Windows.Forms.Button btnInit;
         private System.Windows.Forms.ComboBox cbCom;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gbCollect;
         private System.Windows.Forms.Button btnEnd;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbData;
+        private System.Windows.Forms.GroupBox gbMap;
         private System.Windows.Forms.ListBox lbDataView;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -334,6 +351,7 @@
         private System.Windows.Forms.Label lblDist;
         private System.Windows.Forms.Label lblCoord;
         private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Button btnDraw;
     }
 }
 
