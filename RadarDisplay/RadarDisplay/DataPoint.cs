@@ -9,19 +9,19 @@ namespace RadarDisplay
 {
     class DataPoint
     {
+        private string ID;
         private int occurences;
         private int distance, angle;
         private Point point;
 
-        public DataPoint() { }
-
-        public DataPoint(int angle, int dist)
+        public DataPoint(int id, int angle, int dist)
         {
             this.angle = angle;
             distance = dist;
 
             point = calcPoint(angle,  dist);
             occurences = 0;
+            ID = "point " + id;
         }
 
         public double degToRad(int angleDeg)
@@ -42,6 +42,9 @@ namespace RadarDisplay
 
         public void addOccurence() { occurences++; }
 
+        public string getID() { return ID; }
         public int getAngle() { return angle; }
+        public int getDist() { return distance; }
+        public Point getCoords() { return point; }
     }
 }

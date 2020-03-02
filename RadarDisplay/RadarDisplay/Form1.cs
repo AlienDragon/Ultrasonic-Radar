@@ -81,9 +81,9 @@ namespace RadarDisplay
             int[] parsedData = DataParser.ParseString(indata);
 
             //DataPoint tempData = new DataPoint();
-            dataSet.Add(new DataPoint(parsedData[3], parsedData[0])); //left
-            dataSet.Add(new DataPoint(parsedData[3], parsedData[1])); //forward
-            dataSet.Add(new DataPoint(parsedData[3], parsedData[2])); //right
+            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0])); //left
+            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[1])); //forward
+            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2])); //right
 
         }
 
@@ -92,9 +92,21 @@ namespace RadarDisplay
             lbDataView.Items.Clear();
             for(int i = 0; i < dataSet.Count(); i++)
             {
-                lbDataView.Items.Add(dataSet[i].getAngle().ToString());
+                lbDataView.Items.Add(dataSet[i].getID());
             }
-            lbDataView.Items.Add("test");
+        }
+
+        private void loadPointData(DataPoint data)
+        {
+            lblId.Text = data.getID();
+            lblDist.Text = data.getDist().ToString();
+            lblAngle.Text = data.getAngle().ToString();
+            lblCoord.Text = data.getCoords().X + ", " + data.getCoords().Y;
+        }
+
+        private void lbDataView_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            loadPointData(dataSet[lbDataView.SelectedIndex]);
         }
     }
 }
