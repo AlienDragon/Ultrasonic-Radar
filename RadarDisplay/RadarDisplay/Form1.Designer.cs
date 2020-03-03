@@ -50,6 +50,8 @@
             this.lblAngle = new System.Windows.Forms.Label();
             this.btnDraw = new System.Windows.Forms.Button();
             this.cbAxis = new System.Windows.Forms.CheckBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.gbMap.SuspendLayout();
@@ -103,6 +105,8 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.btnLoad);
+            this.gbData.Controls.Add(this.btnSave);
             this.gbData.Controls.Add(this.groupBox4);
             this.gbData.Controls.Add(this.lbDataView);
             this.gbData.Enabled = false;
@@ -138,9 +142,9 @@
             // 
             this.groupBox4.Controls.Add(this.btnDel);
             this.groupBox4.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox4.Location = new System.Drawing.Point(7, 122);
+            this.groupBox4.Location = new System.Drawing.Point(7, 150);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(255, 173);
+            this.groupBox4.Size = new System.Drawing.Size(255, 145);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Point Data";
@@ -243,12 +247,13 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(174, 144);
+            this.btnDel.Location = new System.Drawing.Point(174, 119);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 1;
             this.btnDel.Text = "Delete Point";
             this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // lblId
             // 
@@ -302,9 +307,9 @@
             // 
             this.btnDraw.Location = new System.Drawing.Point(7, 20);
             this.btnDraw.Name = "btnDraw";
-            this.btnDraw.Size = new System.Drawing.Size(75, 23);
+            this.btnDraw.Size = new System.Drawing.Size(82, 23);
             this.btnDraw.TabIndex = 0;
-            this.btnDraw.Text = "Draw Map";
+            this.btnDraw.Text = "Refresh Map";
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
@@ -317,6 +322,26 @@
             this.cbAxis.TabIndex = 1;
             this.cbAxis.Text = "Show Axis";
             this.cbAxis.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(7, 122);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save Data";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(186, 121);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 3;
+            this.btnLoad.Text = "Load Data";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // Form1
             // 
@@ -366,6 +391,8 @@
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnDraw;
         private System.Windows.Forms.CheckBox cbAxis;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnLoad;
     }
 }
 

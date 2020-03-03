@@ -126,8 +126,8 @@ namespace RadarDisplay
         {
             Graphics g = e.Graphics;
 
-            int midY = pbDisplay.Height / 2;
             int midX = pbDisplay.Width / 2;
+            int midY = pbDisplay.Height / 2;
 
             
             if (cbAxis.Checked == true)
@@ -152,6 +152,25 @@ namespace RadarDisplay
                 catch (System.ArgumentOutOfRangeException) { }*/
             }
             wallBrush.Dispose();
+        }
+
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            if(lbDataView.SelectedItem != null)
+            {
+                dataSet.RemoveAt(lbDataView.SelectedIndex);
+                lbDataView.Invalidate();
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
