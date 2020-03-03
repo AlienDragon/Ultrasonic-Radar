@@ -161,6 +161,10 @@ namespace RadarDisplay
                 dataSet.RemoveAt(lbDataView.SelectedIndex);
                 lbDataView.Invalidate();
             }
+            else
+            {
+                MessageBox.Show("Select a point please you cluts");
+            }
         }
 
         private void btnLoad_Click(object sender, EventArgs e)

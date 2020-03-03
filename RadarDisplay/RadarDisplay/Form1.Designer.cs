@@ -33,32 +33,32 @@
             this.gbCollect = new System.Windows.Forms.GroupBox();
             this.btnEnd = new System.Windows.Forms.Button();
             this.gbData = new System.Windows.Forms.GroupBox();
-            this.lbDataView = new System.Windows.Forms.ListBox();
-            this.gbMap = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.pbDisplay = new System.Windows.Forms.PictureBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblAngle = new System.Windows.Forms.Label();
+            this.lblDist = new System.Windows.Forms.Label();
+            this.lblCoord = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.lblId = new System.Windows.Forms.Label();
-            this.lblCoord = new System.Windows.Forms.Label();
-            this.lblDist = new System.Windows.Forms.Label();
-            this.lblAngle = new System.Windows.Forms.Label();
-            this.btnDraw = new System.Windows.Forms.Button();
+            this.lbDataView = new System.Windows.Forms.ListBox();
+            this.gbMap = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbAxis = new System.Windows.Forms.CheckBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnDraw = new System.Windows.Forms.Button();
+            this.pbDisplay = new System.Windows.Forms.PictureBox();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
-            this.gbMap.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
-            this.groupBox5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.gbMap.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInit
@@ -117,26 +117,25 @@
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
             // 
-            // lbDataView
+            // btnLoad
             // 
-            this.lbDataView.FormattingEnabled = true;
-            this.lbDataView.Location = new System.Drawing.Point(7, 20);
-            this.lbDataView.Name = "lbDataView";
-            this.lbDataView.Size = new System.Drawing.Size(255, 95);
-            this.lbDataView.TabIndex = 0;
-            this.lbDataView.SelectedIndexChanged += new System.EventHandler(this.lbDataView_SelectedIndexChanged);
+            this.btnLoad.Location = new System.Drawing.Point(186, 121);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 23);
+            this.btnLoad.TabIndex = 3;
+            this.btnLoad.Text = "Load Data";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // gbMap
+            // btnSave
             // 
-            this.gbMap.Controls.Add(this.groupBox5);
-            this.gbMap.Controls.Add(this.pbDisplay);
-            this.gbMap.Enabled = false;
-            this.gbMap.Location = new System.Drawing.Point(304, 13);
-            this.gbMap.Name = "gbMap";
-            this.gbMap.Size = new System.Drawing.Size(462, 407);
-            this.gbMap.TabIndex = 5;
-            this.gbMap.TabStop = false;
-            this.gbMap.Text = "Graphic Display";
+            this.btnSave.Location = new System.Drawing.Point(7, 122);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save Data";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox4
             // 
@@ -149,26 +148,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Point Data";
             // 
-            // pbDisplay
+            // btnDel
             // 
-            this.pbDisplay.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pbDisplay.Location = new System.Drawing.Point(7, 20);
-            this.pbDisplay.Name = "pbDisplay";
-            this.pbDisplay.Size = new System.Drawing.Size(400, 250);
-            this.pbDisplay.TabIndex = 0;
-            this.pbDisplay.TabStop = false;
-            this.pbDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbDisplay_Paint);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.cbAxis);
-            this.groupBox5.Controls.Add(this.btnDraw);
-            this.groupBox5.Location = new System.Drawing.Point(7, 307);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(449, 94);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Display controls";
+            this.btnDel.Location = new System.Drawing.Point(174, 119);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 1;
+            this.btnDel.Text = "Delete Point";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -192,6 +180,54 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 94);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lblAngle
+            // 
+            this.lblAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAngle.AutoSize = true;
+            this.lblAngle.Location = new System.Drawing.Point(124, 69);
+            this.lblAngle.Name = "lblAngle";
+            this.lblAngle.Size = new System.Drawing.Size(115, 25);
+            this.lblAngle.TabIndex = 7;
+            this.lblAngle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDist
+            // 
+            this.lblDist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDist.AutoSize = true;
+            this.lblDist.Location = new System.Drawing.Point(124, 46);
+            this.lblDist.Name = "lblDist";
+            this.lblDist.Size = new System.Drawing.Size(115, 23);
+            this.lblDist.TabIndex = 6;
+            this.lblDist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCoord
+            // 
+            this.lblCoord.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCoord.AutoSize = true;
+            this.lblCoord.Location = new System.Drawing.Point(124, 23);
+            this.lblCoord.Name = "lblCoord";
+            this.lblCoord.Size = new System.Drawing.Size(115, 23);
+            this.lblCoord.TabIndex = 5;
+            this.lblCoord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblId
+            // 
+            this.lblId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(124, 0);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(115, 23);
+            this.lblId.TabIndex = 4;
+            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
@@ -245,73 +281,37 @@
             this.label4.Text = "Angle";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnDel
+            // lbDataView
             // 
-            this.btnDel.Location = new System.Drawing.Point(174, 119);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
-            this.btnDel.TabIndex = 1;
-            this.btnDel.Text = "Delete Point";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            this.lbDataView.FormattingEnabled = true;
+            this.lbDataView.Location = new System.Drawing.Point(7, 20);
+            this.lbDataView.Name = "lbDataView";
+            this.lbDataView.Size = new System.Drawing.Size(255, 95);
+            this.lbDataView.TabIndex = 0;
+            this.lbDataView.SelectedIndexChanged += new System.EventHandler(this.lbDataView_SelectedIndexChanged);
             // 
-            // lblId
+            // gbMap
             // 
-            this.lblId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(124, 0);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(115, 23);
-            this.lblId.TabIndex = 4;
-            this.lblId.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gbMap.Controls.Add(this.groupBox5);
+            this.gbMap.Controls.Add(this.pbDisplay);
+            this.gbMap.Enabled = false;
+            this.gbMap.Location = new System.Drawing.Point(304, 13);
+            this.gbMap.Name = "gbMap";
+            this.gbMap.Size = new System.Drawing.Size(462, 407);
+            this.gbMap.TabIndex = 5;
+            this.gbMap.TabStop = false;
+            this.gbMap.Text = "Graphic Display";
             // 
-            // lblCoord
+            // groupBox5
             // 
-            this.lblCoord.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCoord.AutoSize = true;
-            this.lblCoord.Location = new System.Drawing.Point(124, 23);
-            this.lblCoord.Name = "lblCoord";
-            this.lblCoord.Size = new System.Drawing.Size(115, 23);
-            this.lblCoord.TabIndex = 5;
-            this.lblCoord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDist
-            // 
-            this.lblDist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDist.AutoSize = true;
-            this.lblDist.Location = new System.Drawing.Point(124, 46);
-            this.lblDist.Name = "lblDist";
-            this.lblDist.Size = new System.Drawing.Size(115, 23);
-            this.lblDist.TabIndex = 6;
-            this.lblDist.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblAngle
-            // 
-            this.lblAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblAngle.AutoSize = true;
-            this.lblAngle.Location = new System.Drawing.Point(124, 69);
-            this.lblAngle.Name = "lblAngle";
-            this.lblAngle.Size = new System.Drawing.Size(115, 25);
-            this.lblAngle.TabIndex = 7;
-            this.lblAngle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnDraw
-            // 
-            this.btnDraw.Location = new System.Drawing.Point(7, 20);
-            this.btnDraw.Name = "btnDraw";
-            this.btnDraw.Size = new System.Drawing.Size(82, 23);
-            this.btnDraw.TabIndex = 0;
-            this.btnDraw.Text = "Refresh Map";
-            this.btnDraw.UseVisualStyleBackColor = true;
-            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
+            this.groupBox5.Controls.Add(this.cbAxis);
+            this.groupBox5.Controls.Add(this.btnDraw);
+            this.groupBox5.Location = new System.Drawing.Point(7, 307);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(449, 94);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Display controls";
             // 
             // cbAxis
             // 
@@ -323,31 +323,31 @@
             this.cbAxis.Text = "Show Axis";
             this.cbAxis.UseVisualStyleBackColor = true;
             // 
-            // btnSave
+            // btnDraw
             // 
-            this.btnSave.Location = new System.Drawing.Point(7, 122);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "Save Data";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnDraw.Location = new System.Drawing.Point(7, 20);
+            this.btnDraw.Name = "btnDraw";
+            this.btnDraw.Size = new System.Drawing.Size(82, 23);
+            this.btnDraw.TabIndex = 0;
+            this.btnDraw.Text = "Refresh Map";
+            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
-            // btnLoad
+            // pbDisplay
             // 
-            this.btnLoad.Location = new System.Drawing.Point(186, 121);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 3;
-            this.btnLoad.Text = "Load Data";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.pbDisplay.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.pbDisplay.Location = new System.Drawing.Point(7, 20);
+            this.pbDisplay.Name = "pbDisplay";
+            this.pbDisplay.Size = new System.Drawing.Size(400, 250);
+            this.pbDisplay.TabIndex = 0;
+            this.pbDisplay.TabStop = false;
+            this.pbDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbDisplay_Paint);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 450);
+            this.ClientSize = new System.Drawing.Size(778, 434);
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbCollect);
@@ -356,13 +356,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbCollect.ResumeLayout(false);
             this.gbData.ResumeLayout(false);
-            this.gbMap.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.gbMap.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
