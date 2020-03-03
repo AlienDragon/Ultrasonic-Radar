@@ -43,7 +43,7 @@ namespace RadarDisplay
                 try
                 {
                     comPort = new SerialPort();
-                    comPort.BaudRate = 9600;
+                    comPort.BaudRate = 115200;
                     comPort.PortName = cbCom.SelectedItem.ToString();
                     comPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                     comPort.Open();
@@ -69,7 +69,7 @@ namespace RadarDisplay
         }
         private void btnEnd_Click(object sender, EventArgs e)
         {
-            comPort.Write("close");
+            comPort.Write("exit");
             comPort.Close();
             update();
             btnInit.Enabled = true;
@@ -119,32 +119,22 @@ namespace RadarDisplay
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            int midX = pbDisplay.Height / 2;
-            int midY = pbDisplay.Width / 2;
-
-
-            Bitmap _image = new Bitmap(pbDisplay.Width, pbDisplay.Height);
-            Graphics g = Graphics.FromImage(_image);
-
-            for(int i = 0; i < dataSet.Count(); i++)
-            {
-
-            }
+            pbDisplay.Invalidate();
         }
 
         private void pbDisplay_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            int midX = pbDisplay.Height / 2;
-            int midY = pbDisplay.Width / 2;
+            int midY = pbDisplay.Height / 2;
+            int midX = pbDisplay.Width / 2;
 
-            /*
+            
             if (cbAxis.Checked == true)
             {
-                g.DrawLine(Pens.Blue, midX, 0, midX, pbMap.Height);
-                g.DrawLine(Pens.Blue, 0, midY, pbMap.Width, midY);
-            }*/
+                g.DrawLine(Pens.Blue, midX, 0, midX, pbDisplay.Height);
+                g.DrawLine(Pens.Blue, 0, midY, pbDisplay.Width, midY);
+            }
 
             Brush wallBrush = new SolidBrush(Color.Green);
 

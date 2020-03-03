@@ -49,6 +49,7 @@
             this.lblDist = new System.Windows.Forms.Label();
             this.lblAngle = new System.Windows.Forms.Label();
             this.btnDraw = new System.Windows.Forms.Button();
+            this.cbAxis = new System.Windows.Forms.CheckBox();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.gbMap.SuspendLayout();
@@ -149,13 +150,14 @@
             this.pbDisplay.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pbDisplay.Location = new System.Drawing.Point(7, 20);
             this.pbDisplay.Name = "pbDisplay";
-            this.pbDisplay.Size = new System.Drawing.Size(449, 280);
+            this.pbDisplay.Size = new System.Drawing.Size(400, 250);
             this.pbDisplay.TabIndex = 0;
             this.pbDisplay.TabStop = false;
             this.pbDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbDisplay_Paint);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cbAxis);
             this.groupBox5.Controls.Add(this.btnDraw);
             this.groupBox5.Location = new System.Drawing.Point(7, 307);
             this.groupBox5.Name = "groupBox5";
@@ -306,6 +308,16 @@
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
+            // cbAxis
+            // 
+            this.cbAxis.AutoSize = true;
+            this.cbAxis.Location = new System.Drawing.Point(7, 50);
+            this.cbAxis.Name = "cbAxis";
+            this.cbAxis.Size = new System.Drawing.Size(75, 17);
+            this.cbAxis.TabIndex = 1;
+            this.cbAxis.Text = "Show Axis";
+            this.cbAxis.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +335,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -352,6 +365,7 @@
         private System.Windows.Forms.Label lblCoord;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Button btnDraw;
+        private System.Windows.Forms.CheckBox cbAxis;
     }
 }
 
