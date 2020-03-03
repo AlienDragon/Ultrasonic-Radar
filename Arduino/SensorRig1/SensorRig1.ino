@@ -39,42 +39,42 @@ void loop() {
   if (Serial.available()) {
     char start = Serial.read();
     if (start == 'I') {
-      while (Serial.read() != "exit") {
-        for (int j = 0; j < 180; j++) {
-          SensorServo.write(j);
-          delay(20);
-          for (uint8_t i = 0; i < SONAR_NUM; i++) {
-            if (millis() >= pingTimer[i]) {
-              pingTimer[i] += PING_INTERVAL * SONAR_NUM;
-              if (i == 0 && currentSensor == SONAR_NUM - 1)
-                oneSensorCycle(j); // Do something with results.
-              sonar[currentSensor].timer_stop();
-              currentSensor = i;
-              cm[currentSensor] = 0;
-              sonar[currentSensor].ping_timer(echoCheck);
-            }
-          }
-        }
-
-        for (int k = 180; k > 0; k--) {
-          //Serial.println(k);
-          SensorServo.write(k);
-          delay(20);
-          for (uint8_t i = 0; i < SONAR_NUM; i++) {
-            if (millis() >= pingTimer[i]) {
-              pingTimer[i] += PING_INTERVAL * SONAR_NUM;
-              if (i == 0 && currentSensor == SONAR_NUM - 1)
-                oneSensorCycle(k); // Do something with results.
-              sonar[currentSensor].timer_stop();
-              currentSensor = i;
-              cm[currentSensor] = 0;
-              sonar[currentSensor].ping_timer(echoCheck);
-            }
-          }
-        }
+      while(true) {
+        clockwiseRotation();
+        antiClockwiseRotation();
       }
     }
     // The rest of your code would go here.
+  }
+}
+
+void clockwiseRotation() {
+  for (int j = 0; j < 180; j++) {
+    SensorServo.write(j);
+    delay(20);
+    collectSensorData(j);
+  }
+}
+
+void antiClockwiseRotation() {
+  for (int k = 180; k > 0; k--) {
+    SensorServo.write(k);
+    delay(20);
+    collectSensorData(k);
+  }
+}
+
+void collectSensorData(int servoAngle) {
+  for (uint8_t i = 0; i < SONAR_NUM; i++) {
+    if (millis() >= pingTimer[i]) {
+      pingTimer[i] += PING_INTERVAL * SONAR_NUM;
+      if (i == 0 && currentSensor == SONAR_NUM - 1)
+        oneSensorCycle(servoAngle); // Do something with results.
+      sonar[currentSensor].timer_stop();
+      currentSensor = i;
+      cm[currentSensor] = 0;
+      sonar[currentSensor].ping_timer(echoCheck);
+    }
   }
 }
 
