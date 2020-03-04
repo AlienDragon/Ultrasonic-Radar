@@ -108,6 +108,7 @@ namespace RadarDisplay
             {
                 lbDataView.Items.Add(dataSet[i].getID());
             }
+            pbDisplay.Invalidate();
         }
 
         private void lbDataView_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,6 +185,38 @@ namespace RadarDisplay
             {
                 MessageBox.Show("Something went wrong, please try again");
             }
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog filePicker = new OpenFileDialog();
+
+            if (filePicker.ShowDialog() == DialogResult.OK)
+            {
+                string[] lines = File.ReadAllLines(filePicker.FileName);
+
+                dataSet.Clear();
+
+                gbData.Enabled = true;
+                gbMap.Enabled = true;
+
+                foreach (string line in lines)
+                {
+                    float[] data = DataParser.ParseString(line);
+                    
+                    if (data != null)
+                    {
+                        dataSet.Add(new DataPoint(dataSet.Count + 1, data[1], data[0]));
+                    }
+                }
+
+                update();
+            }
+        }
+
+        private void cbAxis_CheckedChanged(object sender, EventArgs e)
+        {
+            update();
         }
     }
 }
