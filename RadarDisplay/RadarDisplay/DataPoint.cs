@@ -11,10 +11,10 @@ namespace RadarDisplay
     {
         private string ID;
         private int occurences;
-        private int distance, angle;
+        private float distance, angle;
         private Point point;
 
-        public DataPoint(int id, int angle, int dist)
+        public DataPoint(int id, float angle, float dist)
         {
             this.angle = angle;
             distance = dist;
@@ -24,12 +24,12 @@ namespace RadarDisplay
             ID = "point " + id;
         }
 
-        public double degToRad(int angleDeg)
+        public double degToRad(float angleDeg)
         {
             return angleDeg * (Math.PI / 180);
         }
 
-        public Point calcPoint(int angle, int length)
+        public Point calcPoint(float angle, float length)
         {
             double dx = length * Math.Cos(degToRad(angle));
             double dy = length * Math.Sin(degToRad(angle));
@@ -43,8 +43,8 @@ namespace RadarDisplay
         public void addOccurence() { occurences++; }
 
         public string getID() { return ID; }
-        public int getAngle() { return angle; }
-        public int getDist() { return distance; }
+        public float getAngle() { return angle; }
+        public float getDist() { return distance; }
         public Point getCoords() { return point; }
     }
 }

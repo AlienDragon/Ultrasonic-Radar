@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.IO;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 
@@ -17,6 +18,7 @@ namespace RadarDisplay
     {
         private static SerialPort comPort;
         private static List<DataPoint> dataSet;
+        private static List<string> rawData;
 
 
         public Form1()
@@ -33,6 +35,7 @@ namespace RadarDisplay
             }
 
             dataSet = new List<DataPoint>();
+            rawData = new List<string>();
         }
 
 
@@ -85,13 +88,17 @@ namespace RadarDisplay
         {
             SerialPort sp = (SerialPort)sender;
             string indata = sp.ReadExisting();
+            rawData.Add(indata);
             Debug.Print(indata);
-            int[] parsedData = DataParser.ParseString(indata);
+            float[] parsedData = DataParser.ParseString(indata);
 
-            //DataPoint tempData = new DataPoint();
-            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0])); //left
-            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[1])); //forward
-            dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2])); //right
+            if(parsedData != null)
+            {
+                //DataPoint tempData = new DataPoint();
+                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0])); //left
+                dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[1], parsedData[0])); //forward
+                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2])); //right
+            }
 
         }
 
@@ -174,7 +181,26 @@ namespace RadarDisplay
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            SaveData fileName = new SaveData();
 
+            var result = fileName.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+
+                //string path = @"C:\Folder1\Folder2\Folder3\Folder4";
+                //string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\"));
+
+                string file = fileName.fileName + ".txt";
+                string test = Directory.GetCurrentDirectory();
+                //DirectoryInfo test2 = Directory.GetParent(test);
+                //DirectoryInfo test3 = Directory.GetParent(@"..\" + test);
+
+                System.IO.File.WriteAllLines(Path.Combine(test, @"..\..\Data\") + file, rawData);
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong, please try again");
+            }
         }
     }
 }
