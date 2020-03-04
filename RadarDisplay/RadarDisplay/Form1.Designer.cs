@@ -52,6 +52,9 @@
             this.cbAxis = new System.Windows.Forms.CheckBox();
             this.btnDraw = new System.Windows.Forms.Button();
             this.pbDisplay = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnLoadData = new System.Windows.Forms.ToolStripMenuItem();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -59,6 +62,7 @@
             this.gbMap.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInit
@@ -85,9 +89,9 @@
             this.gbCollect.Controls.Add(this.btnEnd);
             this.gbCollect.Controls.Add(this.btnInit);
             this.gbCollect.Controls.Add(this.cbCom);
-            this.gbCollect.Location = new System.Drawing.Point(12, 12);
+            this.gbCollect.Location = new System.Drawing.Point(12, 26);
             this.gbCollect.Name = "gbCollect";
-            this.gbCollect.Size = new System.Drawing.Size(171, 100);
+            this.gbCollect.Size = new System.Drawing.Size(274, 100);
             this.gbCollect.TabIndex = 3;
             this.gbCollect.TabStop = false;
             this.gbCollect.Text = "Data Collection";
@@ -110,9 +114,9 @@
             this.gbData.Controls.Add(this.groupBox4);
             this.gbData.Controls.Add(this.lbDataView);
             this.gbData.Enabled = false;
-            this.gbData.Location = new System.Drawing.Point(12, 119);
+            this.gbData.Location = new System.Drawing.Point(12, 132);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(268, 301);
+            this.gbData.Size = new System.Drawing.Size(274, 300);
             this.gbData.TabIndex = 4;
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
@@ -295,9 +299,9 @@
             this.gbMap.Controls.Add(this.groupBox5);
             this.gbMap.Controls.Add(this.pbDisplay);
             this.gbMap.Enabled = false;
-            this.gbMap.Location = new System.Drawing.Point(304, 13);
+            this.gbMap.Location = new System.Drawing.Point(292, 30);
             this.gbMap.Name = "gbMap";
-            this.gbMap.Size = new System.Drawing.Size(462, 407);
+            this.gbMap.Size = new System.Drawing.Size(418, 407);
             this.gbMap.TabIndex = 5;
             this.gbMap.TabStop = false;
             this.gbMap.Text = "Graphic Display";
@@ -308,7 +312,7 @@
             this.groupBox5.Controls.Add(this.btnDraw);
             this.groupBox5.Location = new System.Drawing.Point(7, 307);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(449, 94);
+            this.groupBox5.Size = new System.Drawing.Size(400, 94);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Display controls";
@@ -322,6 +326,7 @@
             this.cbAxis.TabIndex = 1;
             this.cbAxis.Text = "Show Axis";
             this.cbAxis.UseVisualStyleBackColor = true;
+            this.cbAxis.CheckedChanged += new System.EventHandler(this.cbAxis_CheckedChanged);
             // 
             // btnDraw
             // 
@@ -343,14 +348,40 @@
             this.pbDisplay.TabStop = false;
             this.pbDisplay.Paint += new System.Windows.Forms.PaintEventHandler(this.pbDisplay_Paint);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(724, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnLoadData});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(180, 22);
+            this.btnLoadData.Text = "Load Data";
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 434);
+            this.ClientSize = new System.Drawing.Size(724, 449);
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbCollect);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -366,7 +397,10 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -396,6 +430,9 @@
         private System.Windows.Forms.CheckBox cbAxis;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnLoadData;
     }
 }
 
