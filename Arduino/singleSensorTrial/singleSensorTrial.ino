@@ -29,8 +29,8 @@ void loop()
   for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP)
     measure(angle);
 
-  for (int angle = SERVO_UPPER_LIMIT; i >= 0; angle -= SERVO_STEP)
-	measure(angle);
+  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP)
+	  measure(angle);
 }
 
 
