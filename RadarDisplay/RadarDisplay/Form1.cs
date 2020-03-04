@@ -218,5 +218,12 @@ namespace RadarDisplay
         {
             update();
         }
+
+        private void btnClearData_Click(object sender, EventArgs e)
+        {
+            dataSet.Clear();
+            rawData.Clear();
+            update();
+        }
     }
 }
