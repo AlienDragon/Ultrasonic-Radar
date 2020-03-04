@@ -1,52 +1,62 @@
 #include <Servo.h>
 
-Servo SensorServo;
-byte sectionCounter = 0;
+static Servo sensorServo;
 
-void setup()
-{
-  Serial.begin(115200);
-  SensorServo.attach(2);
-  SensorServo.write(0);
-  pinMode(9, OUTPUT);
-  pinMode(10, INPUT);
-}
-
-void loop()
-{
-  while (sectionCounter < 17)
-  {
-    sectionCounter ++;
-    measure();
-  }
-  while (sectionCounter > 0)
-  {
-    sectionCounter --;
-    measure();
-  }
-}
+#define SERVO_UPPER_LIMIT  (180) // Degrees
+#define SERVO_STEP         (10)  // Degrees
 
 // Speed of sound in dry air: 343m/s
 //  1 / 0.0343 = 29.1
 #define SPEED_OF_SOUND_INV (29.1)
 
-void measure ()
-{
-  //byte sectionCounter = 0;
-  int angle = 0;
-  long duration;
-  float distanceCm;
+#define TRIGGER_PIN (9)
+#define ECHO_PIN    (10)
+#define SERVO_PIN   (2)
 
-  angle = sectionCounter * 10;
-  SensorServo.write(angle);
+void setup()
+{
+  Serial.begin(115200);
+
+  sensorServo.attach(SERVO_PIN);
+  sensorServo.write(0);
+
+  pinMode(TRIGGER_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+}
+
+void loop()
+{
+  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP)
+    measure(angle);
+
+  for (int angle = SERVO_UPPER_LIMIT; i >= 0; angle -= SERVO_STEP)
+	measure(angle);
+}
+
+
+void measure (int angle)
+{
+  sensorServo.write(angle);
+
   delay(500);
-  digitalWrite(9, LOW); //do the pulse
+
+  // ensure trigger pin is low
+  digitalWrite(TRIGGER_PIN, LOW); //do the pulse
   delayMicroseconds(2);
-  digitalWrite(9, HIGH);
+
+  // do the actual pulse
+  digitalWrite(TRIGGER_PIN, HIGH);
   delayMicroseconds(10);
-  digitalWrite(9, LOW);
-  duration = pulseIn(10, HIGH, 10000);   //time for the pulse to echo
-  distanceCm = (duration / SPEED_OF_SOUND_INV) / 2; //convert to cm
+
+  // reset it again to low.
+  digitalWrite(TRIGGER_PIN, LOW);
+
+  // time for the pulse to echo
+  const long duration = pulseIn(ECHO_PIN, HIGH, 10000);
+
+  // convert to cm
+  const float distanceCm = (duration / SPEED_OF_SOUND_INV) / 2;
+
   Serial.print("F");
   Serial.print(distanceCm);
   Serial.print("S");
