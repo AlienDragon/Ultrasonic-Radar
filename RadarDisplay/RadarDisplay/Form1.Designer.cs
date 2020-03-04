@@ -33,6 +33,7 @@
             this.gbCollect = new System.Windows.Forms.GroupBox();
             this.btnEnd = new System.Windows.Forms.Button();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.btnClearData = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnDel = new System.Windows.Forms.Button();
@@ -54,7 +55,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLoadData = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnClearData = new System.Windows.Forms.Button();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -120,6 +120,16 @@
             this.gbData.TabIndex = 4;
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
+            // 
+            // btnClearData
+            // 
+            this.btnClearData.Location = new System.Drawing.Point(88, 122);
+            this.btnClearData.Name = "btnClearData";
+            this.btnClearData.Size = new System.Drawing.Size(75, 23);
+            this.btnClearData.TabIndex = 3;
+            this.btnClearData.Text = "Clear Data";
+            this.btnClearData.UseVisualStyleBackColor = true;
+            this.btnClearData.Click += new System.EventHandler(this.btnClearData_Click);
             // 
             // btnSave
             // 
@@ -310,6 +320,8 @@
             // cbAxis
             // 
             this.cbAxis.AutoSize = true;
+            this.cbAxis.Checked = true;
+            this.cbAxis.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbAxis.Location = new System.Drawing.Point(7, 50);
             this.cbAxis.Name = "cbAxis";
             this.cbAxis.Size = new System.Drawing.Size(75, 17);
@@ -359,19 +371,9 @@
             // btnLoadData
             // 
             this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(180, 22);
+            this.btnLoadData.Size = new System.Drawing.Size(127, 22);
             this.btnLoadData.Text = "Load Data";
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
-            // 
-            // btnClearData
-            // 
-            this.btnClearData.Location = new System.Drawing.Point(88, 122);
-            this.btnClearData.Name = "btnClearData";
-            this.btnClearData.Size = new System.Drawing.Size(75, 23);
-            this.btnClearData.TabIndex = 3;
-            this.btnClearData.Text = "Clear Data";
-            this.btnClearData.UseVisualStyleBackColor = true;
-            this.btnClearData.Click += new System.EventHandler(this.btnClearData_Click);
             // 
             // Form1
             // 

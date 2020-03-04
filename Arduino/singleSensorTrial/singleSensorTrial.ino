@@ -42,7 +42,7 @@ void measure ()
   delayMicroseconds(10);
   digitalWrite(9, LOW);
   duration = pulseIn(10, HIGH, 10000);   //time for the pulse to echo
-  distanceCm = duration / 29.1 / 2; //convert to cm
+  distanceCm = duration / 29.1 / 2; //convert to cm (29.1 apparently a conversion factor)
   Serial.print("F");
   Serial.print(distanceCm);
   Serial.print("S");
