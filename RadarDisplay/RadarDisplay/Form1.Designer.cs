@@ -351,8 +351,11 @@
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbCollect);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Radar Display";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbCollect.ResumeLayout(false);
             this.gbData.ResumeLayout(false);
