@@ -23,7 +23,7 @@ char delim[] = {
   'S'
 };
 
-Servo SensorServo;  
+Servo SensorServo;
 
 void setup() {
   Serial.begin(115200);

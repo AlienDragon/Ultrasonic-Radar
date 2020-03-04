@@ -95,11 +95,10 @@ namespace RadarDisplay
             if(parsedData != null)
             {
                 //DataPoint tempData = new DataPoint();
-                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0])); //left
-                dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[1], parsedData[0])); //forward
-                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2])); //right
+                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0]));  //left
+                dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[1], parsedData[0]));    //forward
+                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2]));  //right
             }
-
         }
 
         private void update()
@@ -148,15 +147,6 @@ namespace RadarDisplay
             for (int i = 0; i < dataSet.Count; i++)
             {
                 g.FillEllipse(wallBrush, new Rectangle(dataSet[i].getCoords().X + midX, dataSet[i].getCoords().Y + midY, 3, 3));
-                /*
-                try
-                {
-                    if (MyPoints[i].X > Int32.MinValue)
-                    {
-                        g.FillEllipse(wallBrush, new Rectangle(MyPoints[i].X, MyPoints[i].Y, 3, 3)); //OVERFLOW EXCEPTION
-                    }
-                }
-                catch (System.ArgumentOutOfRangeException) { }*/
             }
             wallBrush.Dispose();
         }
@@ -186,15 +176,8 @@ namespace RadarDisplay
             var result = fileName.ShowDialog();
             if (result == DialogResult.OK)
             {
-
-                //string path = @"C:\Folder1\Folder2\Folder3\Folder4";
-                //string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\"));
-
                 string file = fileName.fileName + ".txt";
                 string test = Directory.GetCurrentDirectory();
-                //DirectoryInfo test2 = Directory.GetParent(test);
-                //DirectoryInfo test3 = Directory.GetParent(@"..\" + test);
-
                 System.IO.File.WriteAllLines(Path.Combine(test, @"..\..\Data\") + file, rawData);
             }
             else
