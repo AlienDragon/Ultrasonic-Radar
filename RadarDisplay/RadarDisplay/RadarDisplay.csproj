@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataEditor.cs">
+    <Compile Include="AddData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataEditor.Designer.cs">
-      <DependentUpon>DataEditor.cs</DependentUpon>
+    <Compile Include="AddData.Designer.cs">
+      <DependentUpon>AddData.cs</DependentUpon>
     </Compile>
     <Compile Include="DataParser.cs" />
     <Compile Include="DataPoint.cs" />
@@ -68,8 +68,8 @@
     <Compile Include="SaveData.Designer.cs">
       <DependentUpon>SaveData.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DataEditor.resx">
-      <DependentUpon>DataEditor.cs</DependentUpon>
+    <EmbeddedResource Include="AddData.resx">
+      <DependentUpon>AddData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

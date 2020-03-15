@@ -225,5 +225,39 @@ namespace RadarDisplay
             rawData.Clear();
             update();
         }
+
+        private void cbTesting_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTesting.Checked)
+            {
+                MessageBox.Show("Warning!!\nThis is not meant to be used for proper functionality testing. The program may not behave as expected.");
+                btnAddp.Enabled = true;
+                gbData.Enabled = true;
+                gbMap.Enabled = true;
+            }
+            else
+            {
+                btnAddp.Enabled = false;
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddData newPointCreator = new AddData();
+            if (newPointCreator.ShowDialog() == DialogResult.OK)
+            {
+                string newPointString = "F" + newPointCreator.distance + "S" + newPointCreator.angle;
+                rawData.Add(newPointString);
+                Debug.WriteLine(newPointString);
+                float[] newPoint = DataParser.ParseString(newPointString);
+
+                if (newPoint != null)
+                {
+                    dataSet.Add(new DataPoint(dataSet.Count + 1, newPoint[1], newPoint[0]));
+                    gbData.Invalidate();
+                    gbMap.Invalidate();
+                }
+            }
+        }
     }
 }

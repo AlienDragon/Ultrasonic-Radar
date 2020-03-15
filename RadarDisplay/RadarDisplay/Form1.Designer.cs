@@ -55,6 +55,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnLoadData = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbTesting = new System.Windows.Forms.CheckBox();
+            this.btnAddp = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -63,6 +66,7 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInit
@@ -91,7 +95,7 @@
             this.gbCollect.Controls.Add(this.cbCom);
             this.gbCollect.Location = new System.Drawing.Point(12, 26);
             this.gbCollect.Name = "gbCollect";
-            this.gbCollect.Size = new System.Drawing.Size(274, 100);
+            this.gbCollect.Size = new System.Drawing.Size(174, 100);
             this.gbCollect.TabIndex = 3;
             this.gbCollect.TabStop = false;
             this.gbCollect.Text = "Data Collection";
@@ -299,9 +303,9 @@
             this.gbMap.Controls.Add(this.groupBox5);
             this.gbMap.Controls.Add(this.pbDisplay);
             this.gbMap.Enabled = false;
-            this.gbMap.Location = new System.Drawing.Point(292, 30);
+            this.gbMap.Location = new System.Drawing.Point(292, 26);
             this.gbMap.Name = "gbMap";
-            this.gbMap.Size = new System.Drawing.Size(418, 407);
+            this.gbMap.Size = new System.Drawing.Size(418, 411);
             this.gbMap.TabIndex = 5;
             this.gbMap.TabStop = false;
             this.gbMap.Text = "Graphic Display";
@@ -375,11 +379,45 @@
             this.btnLoadData.Text = "Load Data";
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
+            // cbTesting
+            // 
+            this.cbTesting.AutoSize = true;
+            this.cbTesting.Location = new System.Drawing.Point(6, 19);
+            this.cbTesting.Name = "cbTesting";
+            this.cbTesting.Size = new System.Drawing.Size(91, 17);
+            this.cbTesting.TabIndex = 4;
+            this.cbTesting.Text = "Testing Mode";
+            this.cbTesting.UseVisualStyleBackColor = true;
+            this.cbTesting.CheckedChanged += new System.EventHandler(this.cbTesting_CheckedChanged);
+            // 
+            // btnAddp
+            // 
+            this.btnAddp.Enabled = false;
+            this.btnAddp.Location = new System.Drawing.Point(6, 42);
+            this.btnAddp.Name = "btnAddp";
+            this.btnAddp.Size = new System.Drawing.Size(75, 23);
+            this.btnAddp.TabIndex = 4;
+            this.btnAddp.Text = "Add point";
+            this.btnAddp.UseVisualStyleBackColor = true;
+            this.btnAddp.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnAddp);
+            this.groupBox1.Controls.Add(this.cbTesting);
+            this.groupBox1.Location = new System.Drawing.Point(193, 26);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(93, 104);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Experimental";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(724, 449);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.gbCollect);
@@ -401,6 +439,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,6 +475,9 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem btnLoadData;
         private System.Windows.Forms.Button btnClearData;
+        private System.Windows.Forms.CheckBox cbTesting;
+        private System.Windows.Forms.Button btnAddp;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
