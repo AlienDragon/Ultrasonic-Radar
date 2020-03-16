@@ -12,9 +12,9 @@ namespace RadarDisplay
         public static float[] ParseString(string input)
         {
             //Match matches = Regex.Match(input, "L([0-9]+)F([0-9]+)R([0-9]+)S([0-9]+)\r?");
-            Match matches = Regex.Match(input, "F([0-9]+.[0-9]+)S([0-9]+)\r?\n?");
+            Match matches = Regex.Match(input, "F([0-9]+.?[0-9]+)S([0-9]+)\r?\n?");
 
-            if (matches.Groups.Count > 1)
+            if (matches.Success)
             {
                 float[] tempArray = new float[2];
                 tempArray[0] = Convert.ToSingle(matches.Groups[1].Value); //Forward Sensor

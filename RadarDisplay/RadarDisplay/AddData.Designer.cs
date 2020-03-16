@@ -31,24 +31,28 @@
             this.scrAngle = new System.Windows.Forms.HScrollBar();
             this.btnFinish = new System.Windows.Forms.Button();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.tbAngle = new System.Windows.Forms.TextBox();
+            this.tbDist = new System.Windows.Forms.TextBox();
+            this.scrDist = new System.Windows.Forms.HScrollBar();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.scrDist = new System.Windows.Forms.HScrollBar();
+            this.lblError = new System.Windows.Forms.Label();
             this.gbData.SuspendLayout();
             this.SuspendLayout();
             // 
             // scrAngle
             // 
             this.scrAngle.Location = new System.Drawing.Point(3, 41);
-            this.scrAngle.Maximum = 180;
+            this.scrAngle.Maximum = 189;
             this.scrAngle.Name = "scrAngle";
-            this.scrAngle.Size = new System.Drawing.Size(239, 17);
+            this.scrAngle.Size = new System.Drawing.Size(293, 17);
             this.scrAngle.TabIndex = 0;
             this.scrAngle.Value = 90;
+            this.scrAngle.ValueChanged += new System.EventHandler(this.scrAngle_ValueChanged);
             // 
             // btnFinish
             // 
-            this.btnFinish.Location = new System.Drawing.Point(187, 137);
+            this.btnFinish.Location = new System.Drawing.Point(236, 137);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Size = new System.Drawing.Size(75, 23);
             this.btnFinish.TabIndex = 1;
@@ -58,16 +62,44 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.tbAngle);
+            this.gbData.Controls.Add(this.tbDist);
             this.gbData.Controls.Add(this.scrDist);
             this.gbData.Controls.Add(this.label2);
             this.gbData.Controls.Add(this.label1);
             this.gbData.Controls.Add(this.scrAngle);
             this.gbData.Location = new System.Drawing.Point(12, 12);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(250, 119);
+            this.gbData.Size = new System.Drawing.Size(299, 119);
             this.gbData.TabIndex = 3;
             this.gbData.TabStop = false;
             this.gbData.Text = "Set Data";
+            // 
+            // tbAngle
+            // 
+            this.tbAngle.Location = new System.Drawing.Point(80, 20);
+            this.tbAngle.Name = "tbAngle";
+            this.tbAngle.Size = new System.Drawing.Size(45, 20);
+            this.tbAngle.TabIndex = 7;
+            this.tbAngle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAngle_KeyPress);
+            // 
+            // tbDist
+            // 
+            this.tbDist.Location = new System.Drawing.Point(90, 74);
+            this.tbDist.Name = "tbDist";
+            this.tbDist.Size = new System.Drawing.Size(45, 20);
+            this.tbDist.TabIndex = 6;
+            this.tbDist.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbDist_KeyPress);
+            // 
+            // scrDist
+            // 
+            this.scrDist.Location = new System.Drawing.Point(3, 99);
+            this.scrDist.Maximum = 200;
+            this.scrDist.Name = "scrDist";
+            this.scrDist.Size = new System.Drawing.Size(293, 17);
+            this.scrDist.TabIndex = 5;
+            this.scrDist.Value = 90;
+            this.scrDist.ValueChanged += new System.EventHandler(this.scrDist_ValueChanged);
             // 
             // label2
             // 
@@ -87,20 +119,24 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Servo Angle:";
             // 
-            // scrDist
+            // lblError
             // 
-            this.scrDist.Location = new System.Drawing.Point(3, 99);
-            this.scrDist.Maximum = 200;
-            this.scrDist.Name = "scrDist";
-            this.scrDist.Size = new System.Drawing.Size(239, 17);
-            this.scrDist.TabIndex = 5;
-            this.scrDist.Value = 90;
+            this.lblError.AutoSize = true;
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.Location = new System.Drawing.Point(12, 137);
+            this.lblError.MaximumSize = new System.Drawing.Size(225, 30);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(32, 13);
+            this.lblError.TabIndex = 4;
+            this.lblError.Text = "Error:";
+            this.lblError.Visible = false;
             // 
             // AddData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(272, 166);
+            this.ClientSize = new System.Drawing.Size(323, 166);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.btnFinish);
             this.Name = "AddData";
@@ -108,6 +144,7 @@
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,5 +156,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.HScrollBar scrDist;
+        private System.Windows.Forms.TextBox tbAngle;
+        private System.Windows.Forms.TextBox tbDist;
+        private System.Windows.Forms.Label lblError;
     }
 }
