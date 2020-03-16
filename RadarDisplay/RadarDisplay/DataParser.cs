@@ -17,24 +17,14 @@ namespace RadarDisplay
             if (matches.Success)
             {
                 float[] tempArray = new float[2];
-                tempArray[0] = Convert.ToSingle(matches.Groups[1].Value); //Forward Sensor
-                tempArray[1] = Convert.ToSingle(matches.Groups[2].Value); //Servo angle
-                //float[] tempArray = new float[4];
-                //tempArray[0] = Convert.Tofloat32(matches.Groups[1].Value); //Left Sensor
-                //tempArray[1] = Convert.Tofloat32(matches.Groups[2].Value); //Forward Sensor
-                //tempArray[2] = Convert.Tofloat32(matches.Groups[3].Value); //Right Sensor
-                /*
-                if (!string.IsNullOrEmpty(matches.Groups[4].Value))
-                {
-                    tempArray[3] = Convert.Tofloat32(matches.Groups[4].Value); //Servo angle
-                }*/
+
+                tempArray[0] = Convert.ToSingle(matches.Groups[1].Value); // Forward Sensor
+                tempArray[1] = Convert.ToSingle(matches.Groups[2].Value); // Servo angle
 
                 return tempArray;
             }
             else
-            {
                 return null;
-            }
         }
     }
 }
