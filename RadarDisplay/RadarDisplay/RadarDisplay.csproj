@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="DataParser.cs" />
     <Compile Include="DataPoint.cs" />
+    <Compile Include="DataSet.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

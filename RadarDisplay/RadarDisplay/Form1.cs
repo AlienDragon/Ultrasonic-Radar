@@ -17,7 +17,6 @@ namespace RadarDisplay
     public partial class Form1 : Form
     {
         private static SerialPort comPort;
-        private static List<DataPoint> dataSet;
         private static List<string> rawData;
 
 
@@ -34,7 +33,6 @@ namespace RadarDisplay
                 cbCom.Items.Add(ports[i]);
             }
 
-            dataSet = new List<DataPoint>();
             rawData = new List<string>();
         }
 
@@ -96,7 +94,7 @@ namespace RadarDisplay
             {
                 //DataPoint tempData = new DataPoint();
                 //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0]));  //left
-                dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[1], parsedData[0]));    //forward
+                DataSet.add(new DataPoint(DataSet.count + 1, parsedData[1], parsedData[0]));    //forward
                 //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2]));  //right
             }
         }
@@ -104,9 +102,9 @@ namespace RadarDisplay
         private void update()
         {
             lbDataView.Items.Clear();
-            for(int i = 0; i < dataSet.Count(); i++)
+            for(int i = 0; i < DataSet.count; i++)
             {
-                lbDataView.Items.Add(dataSet[i].getID());
+                lbDataView.Items.Add(DataSet.getPointAt(i).getID());
             }
             pbDisplay.Invalidate();
         }
@@ -115,7 +113,7 @@ namespace RadarDisplay
         { 
             if(lbDataView.SelectedItem != null)
             {
-                loadPointData(dataSet[lbDataView.SelectedIndex]);
+                loadPointData(DataSet.getPointAt(lbDataView.SelectedIndex));
             }
         }
         private void loadPointData(DataPoint data)
@@ -147,9 +145,9 @@ namespace RadarDisplay
                 g.DrawLine(Pens.Blue, 0, midY, pbDisplay.Width, midY);
             }
 
-            for (int i = 0; i < dataSet.Count; i++)
+            for (int i = 0; i < DataSet.count; i++)
             {
-                dataSet[i].drawPoint(g, midX, midY);
+                DataSet.getPointAt(i).drawPoint(g, midX, midY);
             }
         }
 
@@ -157,7 +155,7 @@ namespace RadarDisplay
         {
             if(lbDataView.SelectedItem != null)
             {
-                dataSet.RemoveAt(lbDataView.SelectedIndex);
+                DataSet.remove(lbDataView.SelectedIndex);
                 lbDataView.Invalidate();
             }
             else
@@ -191,7 +189,7 @@ namespace RadarDisplay
             {
                 string[] lines = File.ReadAllLines(filePicker.FileName);
 
-                dataSet.Clear();
+                DataSet.reset();
 
                 gbData.Enabled = true;
                 gbMap.Enabled = true;
@@ -202,7 +200,7 @@ namespace RadarDisplay
                     
                     if (data != null)
                     {
-                        dataSet.Add(new DataPoint(dataSet.Count + 1, data[1], data[0]));
+                        DataSet.add(new DataPoint(DataSet.count + 1, data[1], data[0]));
                     }
                 }
 
@@ -217,7 +215,7 @@ namespace RadarDisplay
 
         private void btnClearData_Click(object sender, EventArgs e)
         {
-            dataSet.Clear();
+            DataSet.reset();
             rawData.Clear();
             update();
         }
@@ -249,7 +247,7 @@ namespace RadarDisplay
                 if (newPoint != null)
                 {
                     Debug.WriteLine(newPointString);
-                    dataSet.Add(new DataPoint(dataSet.Count + 1, newPoint[1], newPoint[0]));
+                    DataSet.add(new DataPoint(DataSet.count + 1, newPoint[1], newPoint[0]));
                     update();
                     gbMap.Invalidate();
                 }
@@ -258,18 +256,18 @@ namespace RadarDisplay
 
         private void btnCondense_Click(object sender, EventArgs e)
         {
-            DataPoint[] vistedPoints = new DataPoint[dataSet.Count];
+            DataPoint[] vistedPoints = new DataPoint[DataSet.count];
 
-            vistedPoints[0] = dataSet[0];
-            vistedPoints[0] = dataSet[0];
+            vistedPoints[0] = DataSet.getPointAt(0);
+            vistedPoints[0] = DataSet.getPointAt(0);
             int currentFilled = 1; //how far into filling the visitedCoords array
 
             //iterate over the data set and remove all point Data that have the same x and y
-            for (int i = 1; i < dataSet.Count; i++)
+            for (int i = 1; i < DataSet.count; i++)
             {
                 bool found = false;
                 int index = 0;
-                DataPoint currentPoint = dataSet[i];
+                DataPoint currentPoint = DataSet.getPointAt(i);
                 while (!found && index < currentFilled)
                 {
                     //if the X and Y are equal
@@ -289,10 +287,10 @@ namespace RadarDisplay
             }
 
             //reset the data set array and copy in the new points
-            dataSet.Clear();
+            DataSet.reset();
             for(int i = 0; i < currentFilled; i++)
             {
-                dataSet.Add(vistedPoints[i]);
+                DataSet.add(vistedPoints[i]);
             }
 
             update();
