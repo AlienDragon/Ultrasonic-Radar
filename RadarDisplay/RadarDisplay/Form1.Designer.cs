@@ -58,6 +58,9 @@
             this.cbTesting = new System.Windows.Forms.CheckBox();
             this.btnAddp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCondense = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblOccurences = new System.Windows.Forms.Label();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -113,6 +116,7 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.btnCondense);
             this.gbData.Controls.Add(this.btnClearData);
             this.gbData.Controls.Add(this.btnSave);
             this.gbData.Controls.Add(this.groupBox4);
@@ -120,7 +124,7 @@
             this.gbData.Enabled = false;
             this.gbData.Location = new System.Drawing.Point(12, 132);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(274, 300);
+            this.gbData.Size = new System.Drawing.Size(274, 326);
             this.gbData.TabIndex = 4;
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
@@ -151,14 +155,14 @@
             this.groupBox4.Controls.Add(this.tableLayoutPanel1);
             this.groupBox4.Location = new System.Drawing.Point(7, 150);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(255, 145);
+            this.groupBox4.Size = new System.Drawing.Size(255, 170);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Point Data";
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(174, 119);
+            this.btnDel.Location = new System.Drawing.Point(174, 141);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 1;
@@ -171,6 +175,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.lblOccurences, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblAngle, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lblDist, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.lblCoord, 1, 1);
@@ -181,12 +187,13 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 0, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 19);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 94);
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 116);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblAngle
@@ -197,7 +204,7 @@
             this.lblAngle.AutoSize = true;
             this.lblAngle.Location = new System.Drawing.Point(124, 69);
             this.lblAngle.Name = "lblAngle";
-            this.lblAngle.Size = new System.Drawing.Size(115, 25);
+            this.lblAngle.Size = new System.Drawing.Size(115, 23);
             this.lblAngle.TabIndex = 7;
             this.lblAngle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -284,7 +291,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(3, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 25);
+            this.label4.Size = new System.Drawing.Size(115, 23);
             this.label4.TabIndex = 3;
             this.label4.Text = "Angle";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -305,7 +312,7 @@
             this.gbMap.Enabled = false;
             this.gbMap.Location = new System.Drawing.Point(292, 26);
             this.gbMap.Name = "gbMap";
-            this.gbMap.Size = new System.Drawing.Size(418, 411);
+            this.gbMap.Size = new System.Drawing.Size(418, 432);
             this.gbMap.TabIndex = 5;
             this.gbMap.TabStop = false;
             this.gbMap.Text = "Graphic Display";
@@ -412,11 +419,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Experimental";
             // 
+            // btnCondense
+            // 
+            this.btnCondense.Location = new System.Drawing.Point(169, 122);
+            this.btnCondense.Name = "btnCondense";
+            this.btnCondense.Size = new System.Drawing.Size(93, 23);
+            this.btnCondense.TabIndex = 4;
+            this.btnCondense.Text = "Condense Data";
+            this.btnCondense.UseVisualStyleBackColor = true;
+            this.btnCondense.Click += new System.EventHandler(this.btnCondense_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 24);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Occurences";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOccurences
+            // 
+            this.lblOccurences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOccurences.AutoSize = true;
+            this.lblOccurences.Location = new System.Drawing.Point(124, 92);
+            this.lblOccurences.Name = "lblOccurences";
+            this.lblOccurences.Size = new System.Drawing.Size(115, 24);
+            this.lblOccurences.TabIndex = 9;
+            this.lblOccurences.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 449);
+            this.ClientSize = new System.Drawing.Size(724, 470);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);
@@ -478,6 +520,9 @@
         private System.Windows.Forms.CheckBox cbTesting;
         private System.Windows.Forms.Button btnAddp;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnCondense;
+        private System.Windows.Forms.Label lblOccurences;
+        private System.Windows.Forms.Label label5;
     }
 }
 

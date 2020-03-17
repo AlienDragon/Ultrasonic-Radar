@@ -113,7 +113,10 @@ namespace RadarDisplay
 
         private void lbDataView_SelectedIndexChanged(object sender, EventArgs e)
         { 
-            loadPointData(dataSet[lbDataView.SelectedIndex]);
+            if(lbDataView.SelectedItem != null)
+            {
+                loadPointData(dataSet[lbDataView.SelectedIndex]);
+            }
         }
         private void loadPointData(DataPoint data)
         {
@@ -121,6 +124,7 @@ namespace RadarDisplay
             lblDist.Text = data.getDist().ToString();
             lblAngle.Text = data.getAngle().ToString();
             lblCoord.Text = data.getCoords().X + ", " + data.getCoords().Y;
+            lblOccurences.Text = data.getOccurences().ToString();
         }
 
 
@@ -143,13 +147,10 @@ namespace RadarDisplay
                 g.DrawLine(Pens.Blue, 0, midY, pbDisplay.Width, midY);
             }
 
-            Brush wallBrush = new SolidBrush(Color.Green);
-
             for (int i = 0; i < dataSet.Count; i++)
             {
-                g.FillEllipse(wallBrush, new Rectangle(dataSet[i].getCoords().X + midX, dataSet[i].getCoords().Y + midY, 3, 3));
+                dataSet[i].drawPoint(g, midX, midY);
             }
-            wallBrush.Dispose();
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -253,6 +254,47 @@ namespace RadarDisplay
                     gbMap.Invalidate();
                 }
             }
+        }
+
+        private void btnCondense_Click(object sender, EventArgs e)
+        {
+            DataPoint[] vistedPoints = new DataPoint[dataSet.Count];
+
+            vistedPoints[0] = dataSet[0];
+            vistedPoints[0] = dataSet[0];
+            int currentFilled = 1; //how far into filling the visitedCoords array
+
+            //iterate over the data set and remove all point Data that have the same x and y
+            for (int i = 1; i < dataSet.Count; i++)
+            {
+                bool found = false;
+                int index = 0;
+                DataPoint currentPoint = dataSet[i];
+                while (!found && index < currentFilled)
+                {
+                    //if the X and Y are equal
+                    if(currentPoint.getCoords().X == vistedPoints[index].getCoords().X && currentPoint.getCoords().Y == vistedPoints[index].getCoords().Y)
+                    {
+                        found = true;
+                        vistedPoints[index].addOccurence();
+                    }
+                }
+                if (!found) //if after the while loop it still hasn't been found 
+                {
+                    //Add it to the list of visited points
+                    vistedPoints[currentFilled] = currentPoint;
+                    currentFilled++;
+                }
+            }
+
+            //reset the data set array and copy in the new points
+            dataSet.Clear();
+            for(int i = 0; i < currentFilled; i++)
+            {
+                dataSet.Add(vistedPoints[i]);
+            }
+
+            update();
         }
     }
 }
