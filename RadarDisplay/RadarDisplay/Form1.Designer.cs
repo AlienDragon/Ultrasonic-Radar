@@ -321,9 +321,9 @@
             // 
             this.groupBox5.Controls.Add(this.cbAxis);
             this.groupBox5.Controls.Add(this.btnDraw);
-            this.groupBox5.Location = new System.Drawing.Point(7, 307);
+            this.groupBox5.Location = new System.Drawing.Point(7, 276);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(400, 94);
+            this.groupBox5.Size = new System.Drawing.Size(400, 150);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Display controls";
@@ -458,7 +458,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 470);
+            this.ClientSize = new System.Drawing.Size(724, 466);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbMap);
             this.Controls.Add(this.gbData);

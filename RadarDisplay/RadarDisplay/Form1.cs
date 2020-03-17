@@ -278,6 +278,7 @@ namespace RadarDisplay
                         found = true;
                         vistedPoints[index].addOccurence();
                     }
+                    index++;
                 }
                 if (!found) //if after the while loop it still hasn't been found 
                 {
