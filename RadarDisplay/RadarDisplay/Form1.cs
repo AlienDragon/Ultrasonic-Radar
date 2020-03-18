@@ -91,10 +91,13 @@ namespace RadarDisplay
 
             if(parsedData != null)
             {
+                //single Right sensor setup
+                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[1], parsedData[0]));  //forward
+
                 //DataPoint tempData = new DataPoint();
-                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] + (float)(Math.PI / 2), parsedData[0]));  //left
-                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3], parsedData[1]));  //forward
-                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] - (float)(Math.PI / 2), parsedData[2]));  //right
+                //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] + (float)(Math.PI / 2), parsedData[0]));  //left
+                //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3], parsedData[1]));  //forward
+                //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] - (float)(Math.PI / 2), parsedData[2]));  //right
             }
         }
 
