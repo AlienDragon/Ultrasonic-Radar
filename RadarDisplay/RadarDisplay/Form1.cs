@@ -92,9 +92,9 @@ namespace RadarDisplay
             if(parsedData != null)
             {
                 //DataPoint tempData = new DataPoint();
-                //dataSet.Add(new DataPoint(dataSet.count() + 1, parsedData[3], parsedData[0]));  //left
-                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[1], parsedData[0]));    //forward
-                //dataSet.Add(new DataPoint(dataSet.count() + 1, parsedData[3], parsedData[2]));  //right
+                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] + (float)(Math.PI / 2), parsedData[0]));  //left
+                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3], parsedData[1]));  //forward
+                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] - (float)(Math.PI / 2), parsedData[2]));  //right
             }
         }
 

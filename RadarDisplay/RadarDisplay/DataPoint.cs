@@ -33,7 +33,7 @@ namespace RadarDisplay
 
         private Color getColour()
         {
-            int redValue = map(occurences, 1, 10, 1, 51) * 5;
+            int redValue = map(occurences, 0, DataSet.getHighestOcc(), 1, 51) * 5;
             return Color.FromArgb(255, redValue, 0, 0);
         }
 

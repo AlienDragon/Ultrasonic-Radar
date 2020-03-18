@@ -11,15 +11,17 @@ namespace RadarDisplay
     {
         public static float[] ParseString(string input)
         {
-            //Match matches = Regex.Match(input, "L([0-9]+)F([0-9]+)R([0-9]+)S([0-9]+)\r?");
-            Match matches = Regex.Match(input, "F([0-9]+.?[0-9]+)S([0-9]+)\r?\n?");
+            Match matches = Regex.Match(input, "L([0-9]+.?[0-9]+)F([0-9]+.?[0-9]+)R([0-9]+.?[0-9]+)S([0-9]+)\r?\n?");
+            //Match matches = Regex.Match(input, "F([0-9]+.?[0-9]+)S([0-9]+)\r?\n?");
 
             if (matches.Success)
             {
-                float[] tempArray = new float[2];
+                float[] tempArray = new float[4];
 
-                tempArray[0] = Convert.ToSingle(matches.Groups[1].Value); // Forward Sensor
-                tempArray[1] = Convert.ToSingle(matches.Groups[2].Value); // Servo angle
+                tempArray[0] = Convert.ToSingle(matches.Groups[1].Value); // left Sensor
+                tempArray[1] = Convert.ToSingle(matches.Groups[2].Value); // Forward Sensor
+                tempArray[2] = Convert.ToSingle(matches.Groups[3].Value); // Right Sensor
+                tempArray[3] = Convert.ToSingle(matches.Groups[4].Value); // Servo angle
 
                 return tempArray;
             }

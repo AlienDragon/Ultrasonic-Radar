@@ -10,7 +10,7 @@ static Servo sensorServo;
 #define SPEED_OF_SOUND_INV (29.1)
 
 #define TRIGGER_PIN (9)
-#define ECHO_PIN    (10)
+#define ECHO_PIN    (11)
 #define SERVO_PIN   (2)
 
 void setup()
