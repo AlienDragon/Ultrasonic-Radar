@@ -33,11 +33,14 @@
             this.gbCollect = new System.Windows.Forms.GroupBox();
             this.btnEnd = new System.Windows.Forms.Button();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.btnCondense = new System.Windows.Forms.Button();
             this.btnClearData = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnDel = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblOccurences = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.lblAngle = new System.Windows.Forms.Label();
             this.lblDist = new System.Windows.Forms.Label();
             this.lblCoord = new System.Windows.Forms.Label();
@@ -58,9 +61,10 @@
             this.cbTesting = new System.Windows.Forms.CheckBox();
             this.btnAddp = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCondense = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblOccurences = new System.Windows.Forms.Label();
+            this.trkOccurences = new System.Windows.Forms.TrackBar();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblMaxOcc = new System.Windows.Forms.Label();
             this.gbCollect.SuspendLayout();
             this.gbData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -70,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDisplay)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trkOccurences)).BeginInit();
             this.SuspendLayout();
             // 
             // btnInit
@@ -128,6 +133,16 @@
             this.gbData.TabIndex = 4;
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
+            // 
+            // btnCondense
+            // 
+            this.btnCondense.Location = new System.Drawing.Point(169, 122);
+            this.btnCondense.Name = "btnCondense";
+            this.btnCondense.Size = new System.Drawing.Size(93, 23);
+            this.btnCondense.TabIndex = 4;
+            this.btnCondense.Text = "Condense Data";
+            this.btnCondense.UseVisualStyleBackColor = true;
+            this.btnCondense.Click += new System.EventHandler(this.btnCondense_Click);
             // 
             // btnClearData
             // 
@@ -195,6 +210,31 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(242, 116);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lblOccurences
+            // 
+            this.lblOccurences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOccurences.AutoSize = true;
+            this.lblOccurences.Location = new System.Drawing.Point(124, 92);
+            this.lblOccurences.Name = "lblOccurences";
+            this.lblOccurences.Size = new System.Drawing.Size(115, 24);
+            this.lblOccurences.TabIndex = 9;
+            this.lblOccurences.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 24);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Occurences";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAngle
             // 
@@ -319,6 +359,10 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lblMaxOcc);
+            this.groupBox5.Controls.Add(this.lblMin);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.trkOccurences);
             this.groupBox5.Controls.Add(this.cbAxis);
             this.groupBox5.Controls.Add(this.btnDraw);
             this.groupBox5.Location = new System.Drawing.Point(7, 276);
@@ -419,40 +463,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Experimental";
             // 
-            // btnCondense
+            // trkOccurences
             // 
-            this.btnCondense.Location = new System.Drawing.Point(169, 122);
-            this.btnCondense.Name = "btnCondense";
-            this.btnCondense.Size = new System.Drawing.Size(93, 23);
-            this.btnCondense.TabIndex = 4;
-            this.btnCondense.Text = "Condense Data";
-            this.btnCondense.UseVisualStyleBackColor = true;
-            this.btnCondense.Click += new System.EventHandler(this.btnCondense_Click);
+            this.trkOccurences.Location = new System.Drawing.Point(10, 93);
+            this.trkOccurences.Name = "trkOccurences";
+            this.trkOccurences.Size = new System.Drawing.Size(157, 45);
+            this.trkOccurences.TabIndex = 2;
+            this.trkOccurences.ValueChanged += new System.EventHandler(this.trkOccurences_ValueChanged);
             // 
-            // label5
+            // label6
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 92);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 24);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Occurences";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 77);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Minimum number of occurences:";
             // 
-            // lblOccurences
+            // lblMin
             // 
-            this.lblOccurences.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOccurences.AutoSize = true;
-            this.lblOccurences.Location = new System.Drawing.Point(124, 92);
-            this.lblOccurences.Name = "lblOccurences";
-            this.lblOccurences.Size = new System.Drawing.Size(115, 24);
-            this.lblOccurences.TabIndex = 9;
-            this.lblOccurences.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMin.AutoSize = true;
+            this.lblMin.Location = new System.Drawing.Point(17, 121);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(13, 13);
+            this.lblMin.TabIndex = 4;
+            this.lblMin.Text = "0";
+            // 
+            // lblMaxOcc
+            // 
+            this.lblMaxOcc.AutoSize = true;
+            this.lblMaxOcc.Location = new System.Drawing.Point(154, 121);
+            this.lblMaxOcc.Name = "lblMaxOcc";
+            this.lblMaxOcc.Size = new System.Drawing.Size(13, 13);
+            this.lblMaxOcc.TabIndex = 5;
+            this.lblMaxOcc.Text = "1";
             // 
             // Form1
             // 
@@ -483,6 +527,7 @@
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trkOccurences)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +568,10 @@
         private System.Windows.Forms.Button btnCondense;
         private System.Windows.Forms.Label lblOccurences;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblMaxOcc;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TrackBar trkOccurences;
     }
 }
 

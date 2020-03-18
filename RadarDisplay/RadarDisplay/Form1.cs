@@ -19,7 +19,6 @@ namespace RadarDisplay
         private static SerialPort comPort;
         private static List<string> rawData;
 
-
         public Form1()
         {
             InitializeComponent();
@@ -93,19 +92,22 @@ namespace RadarDisplay
             if(parsedData != null)
             {
                 //DataPoint tempData = new DataPoint();
-                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[0]));  //left
-                DataSet.add(new DataPoint(DataSet.count + 1, parsedData[1], parsedData[0]));    //forward
-                //dataSet.Add(new DataPoint(dataSet.Count + 1, parsedData[3], parsedData[2]));  //right
+                //dataSet.Add(new DataPoint(dataSet.count() + 1, parsedData[3], parsedData[0]));  //left
+                DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[1], parsedData[0]));    //forward
+                //dataSet.Add(new DataPoint(dataSet.count() + 1, parsedData[3], parsedData[2]));  //right
             }
         }
 
         private void update()
         {
             lbDataView.Items.Clear();
-            for(int i = 0; i < DataSet.count; i++)
+            for(int i = 0; i < DataSet.count(); i++)
             {
                 lbDataView.Items.Add(DataSet.getPointAt(i).getID());
             }
+
+            lblMaxOcc.Text = DataSet.getHighestOcc().ToString();
+            trkOccurences.Maximum = DataSet.getHighestOcc();
             pbDisplay.Invalidate();
         }
 
@@ -145,10 +147,7 @@ namespace RadarDisplay
                 g.DrawLine(Pens.Blue, 0, midY, pbDisplay.Width, midY);
             }
 
-            for (int i = 0; i < DataSet.count; i++)
-            {
-                DataSet.getPointAt(i).drawPoint(g, midX, midY);
-            }
+            DataSet.drawOccurences(trkOccurences.Value, g, midX, midY);
         }
 
         private void btnDel_Click(object sender, EventArgs e)
@@ -200,7 +199,7 @@ namespace RadarDisplay
                     
                     if (data != null)
                     {
-                        DataSet.add(new DataPoint(DataSet.count + 1, data[1], data[0]));
+                        DataSet.add(new DataPoint(DataSet.count() + 1, data[1], data[0]));
                     }
                 }
 
@@ -247,7 +246,7 @@ namespace RadarDisplay
                 if (newPoint != null)
                 {
                     Debug.WriteLine(newPointString);
-                    DataSet.add(new DataPoint(DataSet.count + 1, newPoint[1], newPoint[0]));
+                    DataSet.add(new DataPoint(DataSet.count() + 1, newPoint[1], newPoint[0]));
                     update();
                     gbMap.Invalidate();
                 }
@@ -256,14 +255,14 @@ namespace RadarDisplay
 
         private void btnCondense_Click(object sender, EventArgs e)
         {
-            DataPoint[] vistedPoints = new DataPoint[DataSet.count];
+            DataPoint[] vistedPoints = new DataPoint[DataSet.count()];
 
             vistedPoints[0] = DataSet.getPointAt(0);
             vistedPoints[0] = DataSet.getPointAt(0);
             int currentFilled = 1; //how far into filling the visitedCoords array
 
             //iterate over the data set and remove all point Data that have the same x and y
-            for (int i = 1; i < DataSet.count; i++)
+            for (int i = 1; i < DataSet.count(); i++)
             {
                 bool found = false;
                 int index = 0;
@@ -294,6 +293,11 @@ namespace RadarDisplay
             }
 
             update();
+        }
+
+        private void trkOccurences_ValueChanged(object sender, EventArgs e)
+        {
+            pbDisplay.Invalidate();
         }
     }
 }
