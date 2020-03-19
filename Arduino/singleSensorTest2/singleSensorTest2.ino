@@ -26,15 +26,22 @@ void setup()
 
 void loop()
 {
-  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP)
-    measure(angle);
+  float data[2];
+  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP){
+    data[0] = measure(angle);
+    data[1] = angle;
 
-  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP)
-	  measure(angle);
+    Serial.write(data, 2);  //this is incorrect
+  }
+    
+
+  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP){
+    measure(angle);
+  }
 }
 
 
-void measure (int angle)
+float measure (int angle)
 {
   sensorServo.write(angle);
 
@@ -56,11 +63,5 @@ void measure (int angle)
 
   // convert to cm
   const float distanceCm = (duration / SPEED_OF_SOUND_INV) / 2;
-
-
-  Serial.print("F");
-  Serial.print(distanceCm);
-  Serial.print("S");
-  Serial.print(angle);
-  Serial.println();
+  return distanceCm;
 }

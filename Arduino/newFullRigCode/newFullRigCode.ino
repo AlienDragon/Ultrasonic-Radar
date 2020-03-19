@@ -10,7 +10,9 @@ static Servo sensorServo;
 #define SPEED_OF_SOUND_INV (29.1)
 
 #define TRIGGER_PIN (9)
-#define ECHO_PIN    (11)
+//#define ECHO_PIN    (11)
+#define 
+#define ECHO_PINS   [10, 11, 12]
 #define SERVO_PIN   (2)
 
 void setup()
@@ -26,15 +28,20 @@ void setup()
 
 void loop()
 {
-  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP)
-    measure(angle);
-
-  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP)
-	  measure(angle);
+  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP){
+    for(int i = 0; i < ECHO_PINS.length; i++){
+      measure(angle,ECHO_PINS[i]);  
+    }
+  }
+  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP){
+    for(int i = 0; i < ECHO_PINS.length; i++){
+      measure(angle,ECHO_PINS[i]);  
+    }
+  }
 }
 
 
-void measure (int angle)
+float measure (int angle, int echoPin)
 {
   sensorServo.write(angle);
 
@@ -52,15 +59,10 @@ void measure (int angle)
   digitalWrite(TRIGGER_PIN, LOW);
 
   // time for the pulse to echo
-  const long duration = pulseIn(ECHO_PIN, HIGH, 10000);
+  const long duration = pulseIn(echoPin, HIGH, 10000);
 
   // convert to cm
   const float distanceCm = (duration / SPEED_OF_SOUND_INV) / 2;
 
-
-  Serial.print("F");
-  Serial.print(distanceCm);
-  Serial.print("S");
-  Serial.print(angle);
-  Serial.println();
+  return distanceCm;
 }
