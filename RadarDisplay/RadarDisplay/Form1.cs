@@ -85,8 +85,9 @@ namespace RadarDisplay
         {
             SerialPort sp = (SerialPort)sender;
             string indata = sp.ReadExisting();
+
             rawData.Add(indata);
-            Debug.Print(indata);
+            //Debug.Print(indata);
             float[] parsedData = DataParser.ParseString(indata);
 
             if(parsedData != null)
@@ -98,6 +99,7 @@ namespace RadarDisplay
                 //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] + (float)(Math.PI / 2), parsedData[0]));  //left
                 //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3], parsedData[1]));  //forward
                 //DataSet.add(new DataPoint(DataSet.count() + 1, parsedData[3] - (float)(Math.PI / 2), parsedData[2]));  //right
+
             }
         }
 

@@ -50,8 +50,8 @@ namespace RadarDisplay
         public Point calcPoint(float angle, float length)
         {
             //length = length * (float)Math.Acos(degToRad(angle));  //screw you Jim Adams
-            double dy = length * Math.Cos(degToRad(angle) + Math.PI / 2);
-            double dx = length * Math.Sin(degToRad(angle) + Math.PI / 2);
+            double dy = length * Math.Sin(degToRad(angle) + Math.PI);
+            double dx = length * Math.Cos(degToRad(angle) + Math.PI);
 
             Point tempPoint = new Point();
             tempPoint.X = (int)dx;

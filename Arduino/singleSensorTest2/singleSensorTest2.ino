@@ -26,17 +26,22 @@ void setup()
 
 void loop()
 {
-  float data[2];
-  for (int angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP){
-    data[0] = measure(angle);
-    data[1] = angle;
+  float data[1];
+  for (float angle = 0; angle < SERVO_UPPER_LIMIT; angle += SERVO_STEP){
+    //data[0] = measure(angle);
+    //data[0] = angle;
 
-    Serial.write(data, 2);  //this is incorrect
-  }
     
+    //byte *dataP = (byte*)data;
+    //Serial.println(*dataP);
+    
+    //Serial.write(dataP, sizeof(data));
+    Serial.write(angle);
+  }
 
-  for (int angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP){
+  for (float angle = SERVO_UPPER_LIMIT; angle > 0; angle -= SERVO_STEP){
     measure(angle);
+    Serial.write(angle);
   }
 }
 
